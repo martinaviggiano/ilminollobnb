@@ -452,33 +452,38 @@ a {
   margin: 0 auto;
   padding: 0 1.5rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: var(--gap);
+  grid-template-columns: 1fr;
 }
 .footer h2 {
   color: #fff;
 }
-.footer__address {
-  opacity: 0.85;
+.footer__contact {
+  max-width: 540px;
 }
+.footer__contact p {
+  margin: 0 0 0.5em;
+}
+.footer__phone,
 .footer__email {
   display: inline-block;
-  margin: 0.5em 0 1.5em;
+  margin: 0 0 0.75em;
   text-decoration: underline;
   text-underline-offset: 3px;
   opacity: 0.9;
 }
 .footer__cta {
-  display: inline-block;
-}
-.footer__meta {
-  text-align: right;
+  display: block;
+  width: fit-content;
+  margin-top: 1rem;
 }
 .footer__social {
   display: inline-flex;
   align-items: center;
   gap: 0.5em;
-  margin-top: 1.2em;
+  margin-top: 1.75em;
+  margin-bottom: 1.25em;
+  color: var(--color-cream);
   text-decoration: none;
   opacity: 0.85;
   transition: opacity 0.2s;
@@ -487,10 +492,15 @@ a {
   opacity: 1;
 }
 .footer__copy {
-  text-align: center;
+  margin-top: 3rem;
+  text-align: left;
   font-size: 0.8rem;
   opacity: 0.55;
-  margin: 3rem 0 0;
+}
+@media (min-width: 900px) {
+  .footer__copy {
+    white-space: nowrap;
+  }
 }
 
 /* ===================== Scroll reveal ===================== */
