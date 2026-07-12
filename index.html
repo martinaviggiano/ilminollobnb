@@ -1,15 +1,337 @@
 <!doctype html>
-
-<html lang="en">
+<html lang="it">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Il Minollo B&amp;B Postiglione</title>
+    <meta
+      name="description"
+      content="Il Minollo B&amp;B: casa vacanze indipendente a Postiglione, nel cuore del Parco Nazionale del Cilento, Vallo di Diano e Alburni."
+    />
 
-    <title>Il Minollo Bnb</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
   </head>
-
   <body>
-    <h1>Il Minollo B&B</h1>
-    <p>Sito in costruzione</p>
+    <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+
+    <!-- ============ NAV ============ -->
+    <header class="nav" id="nav">
+      <div class="nav__inner">
+        <a href="#top" class="nav__brand">
+          <svg class="nav__mark" viewBox="0 0 40 40" aria-hidden="true">
+            <path
+              d="M4 28 L14 12 L20 20 L26 8 L36 28 Z"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span>Il Minollo</span>
+        </a>
+        <button
+          class="nav__toggle"
+          id="navToggle"
+          aria-label="Apri il menu"
+          aria-expanded="false"
+          aria-controls="navMenu"
+        >
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="nav__menu" id="navMenu">
+          <a href="#casa">La casa</a>
+          <a href="#dettagli">Gli spazi</a>
+          <a href="#dove">Dove siamo</a>
+          <a href="#contatti" class="nav__cta">Scrivici</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="contenuto">
+      <!-- ============ HERO ============ -->
+      <section class="hero" id="top">
+        <img
+          class="hero__scene"
+          src="img/front_door.jpg"
+          alt=""
+          aria-hidden="true"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <div class="hero__scrim" aria-hidden="true"></div>
+
+        <div class="hero__content">
+          <p class="eyebrow">
+            Postiglione (SA) · Parco Nazionale del Cilento, Vallo di Diano e
+            Alburni
+          </p>
+          <h1>Il Minollo<span>&nbsp;B&amp;B</span></h1>
+          <p class="hero__lede">
+            Una casa vacanze indipendente tra i borghi di pietra e i monti
+            Alburni, nel cuore del Cilento patrimonio UNESCO.
+          </p>
+          <div class="hero__actions">
+            <a href="#casa" class="btn btn--primary">Scopri la casa</a>
+            <a href="#contatti" class="btn btn--ghost">Contattaci</a>
+          </div>
+        </div>
+
+        <a href="#casa" class="hero__scroll" aria-label="Scorri verso il basso">
+          <span></span>
+        </a>
+      </section>
+
+      <!-- contour divider -->
+      <div class="contour" aria-hidden="true">
+        <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+          <use href="#contourLines" />
+        </svg>
+      </div>
+
+      <!-- ============ LA CASA ============ -->
+      <section class="section" id="casa">
+        <div class="section__inner section__inner--split">
+          <div class="reveal">
+            <p class="eyebrow eyebrow--dark">La casa</p>
+            <h2>Uno spazio tutto vostro, tra le colline del Cilento</h2>
+            <p>
+              Il Minollo è una casa vacanze indipendente pensata per chi cerca
+              tranquillità e autenticità: un'ampia e accogliente zona giorno con
+              cucina, due camere da letto, un bagno e un piccolo terrazzino
+              affacciato sul paesaggio di Postiglione.
+            </p>
+            <p>
+              Il punto di partenza ideale per esplorare i monti Alburni, il
+              Vallo di Diano e i sentieri del Parco Nazionale del Cilento.
+            </p>
+          </div>
+          <div class="reveal reveal--delay">
+            <img
+              class="illus"
+              src="img/kitchen.jpg"
+              alt="Zona giorno con cucina della casa"
+              loading="lazy"
+              width="1000"
+              height="667"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ GLI SPAZI ============ -->
+      <section class="section section--tinted" id="dettagli">
+        <div class="section__inner">
+          <p class="eyebrow eyebrow--dark reveal">Gli spazi</p>
+          <h2 class="reveal">Cosa trovate al Minollo</h2>
+          <div class="cards">
+            <article class="card reveal">
+              <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true">
+                <path
+                  d="M6 40V16l18-10 18 10v24H6Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+                <rect
+                  x="18"
+                  y="26"
+                  width="12"
+                  height="14"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+              </svg>
+              <h3>Zona giorno &amp; cucina</h3>
+              <p>
+                Ampio soggiorno luminoso con angolo cottura, pensato per
+                sentirsi come a casa.
+              </p>
+            </article>
+            <article class="card reveal reveal--delay">
+              <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true">
+                <rect
+                  x="6"
+                  y="18"
+                  width="36"
+                  height="20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+                <path d="M6 26h36" stroke="currentColor" stroke-width="2" />
+                <path
+                  d="M12 18v-4a4 4 0 0 1 4-4h16a4 4 0 0 1 4 4v4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+              </svg>
+              <h3>Due camere da letto</h3>
+              <p>
+                Spazi curati e silenziosi per riposare dopo una giornata tra
+                sentieri e borghi.
+              </p>
+            </article>
+            <article class="card reveal reveal--delay2">
+              <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true">
+                <path
+                  d="M8 24h32M12 24V14a4 4 0 0 1 4-4h4v14M12 24v16M40 24v10a6 6 0 0 1-6 6H14a6 6 0 0 1-6-6"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+              </svg>
+              <h3>Bagno</h3>
+              <p>Un bagno completo e funzionale a disposizione degli ospiti.</p>
+            </article>
+            <article class="card reveal reveal--delay3">
+              <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true">
+                <path
+                  d="M6 42h36M10 42V22l14-10 14 10v20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+                <path
+                  d="M18 42V30h12v12"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+              </svg>
+              <h3>Terrazzino</h3>
+              <p>
+                Un piccolo spazio all'aperto dove godersi l'aria del Cilento in totale relax
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- contour divider (inverted) -->
+      <div class="contour contour--flip" aria-hidden="true">
+        <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+          <use href="#contourLines" />
+        </svg>
+      </div>
+
+      <!-- ============ DOVE SIAMO ============ -->
+      <section class="section section--dark" id="dove">
+        <div class="section__inner section__inner--split">
+          <div class="reveal">
+            <p class="eyebrow">Dove siamo</p>
+            <h2>Postiglione, tra Vallo di Diano e Alburni</h2>
+            <p>
+              La casa si trova a Corso Vittorio Emanuele 49A, Postiglione, un
+              piccolo borgo nel Parco Nazionale del Cilento, Vallo di Diano e
+              Alburni, riconosciuto Riserva della Biosfera UNESCO. Da qui potete
+              raggiungere facilmente i sentieri di montagna, le grotte degli
+              Alburni e i borghi storici della zona.
+            </p>
+            <a
+              class="btn btn--primary"
+              href="https://www.google.com/maps/search/?api=1&query=Corso+Vittorio+Emanuele+49A+Postiglione+Italy"
+              target="_blank"
+              rel="noopener"
+              >Apri in Google Maps</a
+            >
+          </div>
+          <div class="reveal reveal--delay map-frame">
+            <iframe
+              title="Mappa: Corso Vittorio Emanuele 49A, Postiglione"
+              src="https://www.google.com/maps?q=Corso+Vittorio+Emanuele+49A+Postiglione+Italy&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            >
+            </iframe>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CONTATTI / FOOTER ============ -->
+      <footer class="footer" id="contatti">
+        <div class="footer__inner">
+          <div>
+            <p class="eyebrow">Contatti</p>
+            <h2>Prenota il tuo soggiorno</h2>
+
+            <p>+39 335 627 8289</p>
+
+            <a class="footer__email" href="mailto:ilminollobnb@gmail.com"
+              >ilminollobnb@gmail.com</a
+            >
+            <br />
+            <a
+              class="btn btn--primary footer__cta"
+              href="mailto:ilminollobnb@gmail.com"
+              >Scrivi una email</a
+            >
+          </div>
+          <div class="footer__meta">
+            <a
+              href="https://www.facebook.com/share/1EDuHQCoQA/"
+              target="_blank"
+              rel="noopener"
+              class="footer__social"
+              aria-label="Il Minollo B&amp;B su Facebook"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+              >
+                <path
+                  fill="currentColor"
+                  d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"
+                />
+              </svg>
+              <span>Facebook</span>
+            </a>
+          </div>
+        </div>
+        <p class="footer__copy">© <span id="year"></span> Il Minollo B&amp;B - CIN: IT065101B4H9EBAGQJ - CIR: IT15065101EXTLZX7</p>
+      </footer>
+    </main>
+
+    <!-- shared SVG symbols -->
+    <svg width="0" height="0" style="position: absolute">
+      <symbol id="contourLines" viewBox="0 0 1200 60">
+        <path
+          d="M0,10 C150,40 250,-10 400,15 C550,40 650,0 800,20 C950,40 1050,5 1200,15"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          opacity="0.35"
+        />
+        <path
+          d="M0,25 C150,55 250,5 400,30 C550,55 650,15 800,35 C950,55 1050,20 1200,30"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          opacity="0.5"
+        />
+        <path
+          d="M0,42 C150,60 250,22 400,45 C550,60 650,30 800,48 C950,60 1050,35 1200,45"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          opacity="0.7"
+        />
+      </symbol>
+    </svg>
+
+    <script src="script.js"></script>
   </body>
 </html>
