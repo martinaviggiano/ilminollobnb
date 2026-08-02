@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Il Minollo B&amp;B Postiglione</title>
+    <title data-i18n="meta.title">Il Minollo B&amp;B Postiglione</title>
     <meta
       name="description"
+      data-i18n-attr-content="meta.description"
       content="Il Minollo B&amp;B: casa vacanze indipendente a Postiglione, nel cuore del Parco Nazionale del Cilento, Vallo di Diano e Alburni."
     />
 
@@ -22,7 +23,7 @@
     </script>
   </head>
   <body>
-    <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+    <a class="skip-link" href="#contenuto" data-i18n="skip.link">Vai al contenuto</a>
 
     <!-- ============ NAV ============ -->
     <header class="nav" id="nav">
@@ -39,21 +40,46 @@
           </svg>
           <span>Il Minollo</span>
         </a>
-        <button
-          class="nav__toggle"
-          id="navToggle"
-          aria-label="Apri il menu"
-          aria-expanded="false"
-          aria-controls="navMenu"
-        >
-          <span></span><span></span><span></span>
-        </button>
-        <nav class="nav__menu" id="navMenu">
-          <a href="#casa">La casa</a>
-          <a href="#dettagli">Gli spazi</a>
-          <a href="#dove">Dove siamo</a>
-          <a href="#contatti" class="nav__cta">Scrivici</a>
-        </nav>
+
+        <div class="nav__actions">
+          <nav class="nav__menu" id="navMenu">
+            <a href="#casa" data-i18n="nav.casa">La casa</a>
+            <a href="#dettagli" data-i18n="nav.dettagli">Gli spazi</a>
+            <a href="#dove" data-i18n="nav.dove">Dove siamo</a>
+            <a href="#contatti" class="nav__cta" data-i18n="nav.cta">Scrivici</a>
+          </nav>
+
+          <div class="lang-switch" id="langSwitch">
+            <button
+              class="lang-switch__btn"
+              id="langBtn"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+              aria-label="Cambia lingua / Change language"
+            >
+              <svg class="lang-switch__icon" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6" />
+                <path d="M3 12h18M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9Z" fill="none" stroke="currentColor" stroke-width="1.6" />
+              </svg>
+              <span class="lang-switch__label" id="langLabel">IT</span>
+            </button>
+            <ul class="lang-switch__menu" id="langMenu" role="listbox">
+              <li role="option" data-lang="it"><button type="button">Italiano</button></li>
+              <li role="option" data-lang="en"><button type="button">English</button></li>
+            </ul>
+          </div>
+
+          <button
+            class="nav__toggle"
+            id="navToggle"
+            aria-label="Apri il menu"
+            data-i18n-attr-aria-label="nav.openMenu"
+            aria-expanded="false"
+            aria-controls="navMenu"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
       </div>
     </header>
 
@@ -71,22 +97,27 @@
         <div class="hero__scrim" aria-hidden="true"></div>
 
         <div class="hero__content">
-          <p class="eyebrow">
+          <p class="eyebrow" data-i18n="hero.eyebrow">
             Postiglione (SA) · Parco Nazionale del Cilento, Vallo di Diano e
             Alburni
           </p>
-          <h1>Il Minollo<span>&nbsp;B&amp;B</span></h1>
-          <p class="hero__lede">
+          <h1 data-i18n-html="hero.h1">Il Minollo<span>&nbsp;B&amp;B</span></h1>
+          <p class="hero__lede" data-i18n="hero.lede">
             Una casa vacanze indipendente tra i borghi di pietra e i monti
             Alburni, nel cuore del Cilento patrimonio UNESCO.
           </p>
           <div class="hero__actions">
-            <a href="#casa" class="btn btn--primary">Scopri la casa</a>
-            <a href="#contatti" class="btn btn--ghost">Contattaci</a>
+            <a href="#casa" class="btn btn--primary" data-i18n="hero.btnPrimary">Scopri la casa</a>
+            <a href="#contatti" class="btn btn--ghost" data-i18n="hero.btnGhost">Contattaci</a>
           </div>
         </div>
 
-        <a href="#casa" class="hero__scroll" aria-label="Scorri verso il basso">
+        <a
+          href="#casa"
+          class="hero__scroll"
+          aria-label="Scorri verso il basso"
+          data-i18n-attr-aria-label="hero.scrollLabel"
+        >
           <span></span>
         </a>
       </section>
@@ -102,15 +133,15 @@
       <section class="section" id="casa">
         <div class="section__inner section__inner--split">
           <div class="reveal">
-            <p class="eyebrow eyebrow--dark">La casa</p>
-            <h2>Uno spazio tutto vostro, tra le colline del Cilento</h2>
-            <p>
+            <p class="eyebrow eyebrow--dark" data-i18n="casa.eyebrow">La casa</p>
+            <h2 data-i18n="casa.h2">Uno spazio tutto vostro, tra le colline del Cilento</h2>
+            <p data-i18n="casa.p1">
               Il Minollo è una casa vacanze indipendente pensata per chi cerca
               tranquillità e autenticità: un'ampia e accogliente zona giorno con
               cucina, due camere da letto, un bagno e un piccolo terrazzino
               affacciato sul paesaggio di Postiglione.
             </p>
-            <p>
+            <p data-i18n="casa.p2">
               Il punto di partenza ideale per esplorare i monti Alburni, il
               Vallo di Diano e i sentieri del Parco Nazionale del Cilento.
             </p>
@@ -120,6 +151,7 @@
               class="illus"
               src="img/kitchen.jpg"
               alt="Zona giorno con cucina della casa"
+              data-i18n-attr-alt="casa.imgAlt"
               loading="lazy"
               width="1000"
               height="667"
@@ -131,8 +163,8 @@
       <!-- ============ GLI SPAZI ============ -->
       <section class="section section--tinted" id="dettagli">
         <div class="section__inner">
-          <p class="eyebrow eyebrow--dark reveal">Gli spazi</p>
-          <h2 class="reveal">Cosa trovate al Minollo</h2>
+          <p class="eyebrow eyebrow--dark reveal" data-i18n="spazi.eyebrow">Gli spazi</p>
+          <h2 class="reveal" data-i18n="spazi.h2">Cosa trovate al Minollo</h2>
           <div class="cards">
             <article class="card reveal">
               <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true">
@@ -152,8 +184,8 @@
                   stroke-width="2"
                 />
               </svg>
-              <h3>Zona giorno &amp; cucina</h3>
-              <p>
+              <h3 data-i18n="spazi.card1.h3">Zona giorno &amp; cucina</h3>
+              <p data-i18n="spazi.card1.p">
                 Ampio soggiorno luminoso con angolo cottura, pensato per
                 sentirsi come a casa.
               </p>
@@ -177,8 +209,8 @@
                   stroke-width="2"
                 />
               </svg>
-              <h3>Due camere da letto</h3>
-              <p>
+              <h3 data-i18n="spazi.card2.h3">Due camere da letto</h3>
+              <p data-i18n="spazi.card2.p">
                 Spazi curati e silenziosi per riposare dopo una giornata tra
                 sentieri e borghi.
               </p>
@@ -192,8 +224,8 @@
                   stroke-width="2"
                 />
               </svg>
-              <h3>Bagno</h3>
-              <p>Un bagno completo e funzionale a disposizione degli ospiti.</p>
+              <h3 data-i18n="spazi.card3.h3">Bagno</h3>
+              <p data-i18n="spazi.card3.p">Un bagno completo e funzionale a disposizione degli ospiti.</p>
             </article>
             <article class="card reveal reveal--delay3">
               <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true">
@@ -210,8 +242,8 @@
                   stroke-width="2"
                 />
               </svg>
-              <h3>Terrazzino</h3>
-              <p>
+              <h3 data-i18n="spazi.card4.h3">Terrazzino</h3>
+              <p data-i18n="spazi.card4.p">
                 Un piccolo spazio all'aperto dove godersi l'aria del Cilento in
                 totale relax
               </p>
@@ -231,9 +263,9 @@
       <section class="section section--dark" id="dove">
         <div class="section__inner section__inner--split">
           <div class="reveal">
-            <p class="eyebrow">Dove siamo</p>
-            <h2>Postiglione, tra Vallo di Diano e Alburni</h2>
-            <p>
+            <p class="eyebrow" data-i18n="dove.eyebrow">Dove siamo</p>
+            <h2 data-i18n="dove.h2">Postiglione, tra Vallo di Diano e Alburni</h2>
+            <p data-i18n="dove.p">
               La casa si trova a Corso Vittorio Emanuele 49A, Postiglione, un
               piccolo borgo nel Parco Nazionale del Cilento, Vallo di Diano e
               Alburni, riconosciuto Riserva della Biosfera UNESCO. Da qui potete
@@ -245,6 +277,7 @@
               href="https://maps.app.goo.gl/uvXGikSQyfnA8T388"
               target="_blank"
               rel="noopener"
+              data-i18n="dove.btn"
               >Apri in Google Maps</a
             >
           </div>
@@ -266,8 +299,8 @@
       <footer class="footer" id="contatti">
         <div class="footer__inner">
           <div class="footer__contact">
-            <p class="eyebrow">Contatti</p>
-            <h2>Prenota il tuo soggiorno</h2>
+            <p class="eyebrow" data-i18n="contatti.eyebrow">Contatti</p>
+            <h2 data-i18n="contatti.h2">Prenota il tuo soggiorno</h2>
 
             <a class="footer__phone" href="tel:+393356278289"
               >+39 335 627 8289</a
@@ -280,6 +313,7 @@
             <a
               class="btn btn--primary footer__cta"
               href="mailto:ilminollobnb@gmail.com"
+              data-i18n="contatti.btnEmail"
               >Scrivi una email</a
             >
             <a
@@ -288,6 +322,7 @@
               rel="noopener"
               class="footer__social"
               aria-label="Il Minollo B&amp;B su Facebook"
+              data-i18n-attr-aria-label="contatti.facebookAria"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -338,6 +373,7 @@
       </symbol>
     </svg>
 
+    <script src="i18n.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
