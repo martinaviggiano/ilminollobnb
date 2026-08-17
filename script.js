@@ -62,10 +62,12 @@ function initGallery() {
   const galleryImages = [
     "img/01_kitchen.jpg",
     "img/02_bathroom.jpg",
-    "img/03_bedroom1.jpg",
+    "img/03_01_bedroom1.jpg",
+    "img/03_02_bedroom2.jpg",
     "img/04_front_door.jpg",
     "img/05_front.jpg",
-    "img/06_aerial.jpg",
+    "img/06_mountains.jpg",
+    "img/07_aerial.jpg",
   ];
 
   const gallery = document.querySelector("[data-gallery]");
