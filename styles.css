@@ -493,6 +493,111 @@ a {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
+.gallery {
+  display: grid;
+  gap: 1rem;
+}
+
+.gallery__frame {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.gallery__main-trigger {
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.gallery__main-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+  background: rgba(46, 42, 34, 0.08);
+}
+
+.gallery__nav {
+  border: none;
+  background: rgba(46, 42, 34, 0.8);
+  color: #fff;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+  width: 2.7rem;
+  height: 2.7rem;
+  border-radius: 999px;
+  font-size: 1.8rem;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+.gallery__nav:hover {
+  background: rgba(46, 42, 34, 0.95);
+}
+
+.gallery__thumbs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(4.5rem, 1fr));
+  gap: 0.55rem;
+}
+
+.gallery__thumb {
+  display: block;
+  background: transparent;
+  border: 2px solid transparent;
+  padding: 0;
+  border-radius: calc(var(--radius) - 2px);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.gallery__thumb:hover {
+  transform: translateY(-1px);
+}
+
+.gallery__thumb img {
+  display: block;
+  width: 100%;
+  height: 4.4rem;
+  object-fit: cover;
+}
+
+.gallery__thumb.is-active {
+  border-color: var(--color-brick);
+}
+
+/* GLightbox theming — align its default "clean" skin with our palette
+   instead of the library's out-of-the-box blue/black look. */
+.gcontainer .gclose,
+.gcontainer .gnext,
+.gcontainer .gprev {
+  background: rgba(46, 42, 34, 0.8) !important;
+}
+
+.gcontainer .gclose:hover,
+.gcontainer .gnext:hover,
+.gcontainer .gprev:hover {
+  background: rgba(46, 42, 34, 0.95) !important;
+}
+
+.goverlay {
+  background: rgba(20, 18, 16, 0.92) !important;
+}
+
 /* Cards */
 .cards {
   display: grid;
@@ -589,6 +694,35 @@ a {
   font-size: 0.8rem;
   opacity: 0.55;
 }
+@media (max-width: 640px) {
+  /* Swipe is the primary way to browse on touch screens, but the arrow
+     buttons stay visible (overlaid on the image) rather than disappearing,
+     so mouse/keyboard/switch-control users on small viewports still have
+     a way to navigate. */
+  .gallery__frame {
+    grid-template-columns: 1fr;
+    position: relative;
+  }
+
+  .gallery__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.4rem;
+    height: 2.4rem;
+    font-size: 1.5rem;
+    z-index: 1;
+  }
+
+  .gallery__nav--prev {
+    left: 0.5rem;
+  }
+
+  .gallery__nav--next {
+    right: 0.5rem;
+  }
+}
+
 @media (min-width: 900px) {
   .footer__copy {
     white-space: nowrap;

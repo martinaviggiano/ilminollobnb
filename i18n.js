@@ -38,7 +38,13 @@
           "Il Minollo è una casa vacanze indipendente pensata per chi cerca tranquillità e autenticità: un'ampia e accogliente zona giorno con cucina, due camere da letto, un bagno e un piccolo terrazzino affacciato sul paesaggio di Postiglione.",
         p2:
           "Il punto di partenza ideale per esplorare i monti Alburni, il Vallo di Diano e i sentieri del Parco Nazionale del Cilento.",
-        imgAlt: "Zona giorno con cucina della casa",
+        gallery: {
+          prevLabel: "Immagine precedente",
+          nextLabel: "Immagine successiva",
+          openLabel: "Apri la galleria fotografica",
+          thumbsLabel: "Galleria fotografica",
+          thumbLabel: "Mostra la foto",
+        },
       },
       spazi: {
         eyebrow: "Gli spazi",
@@ -107,7 +113,13 @@
           "Il Minollo is an independent holiday home designed for those seeking peace and authenticity: a bright, welcoming living area with kitchen, two bedrooms, one bathroom, and a small terrace overlooking the Postiglione landscape.",
         p2:
           "The ideal starting point for exploring the Alburni mountains, the Vallo di Diano and the trails of the Cilento National Park.",
-        imgAlt: "Living area with kitchen inside the house",
+        gallery: {
+          prevLabel: "Previous photo",
+          nextLabel: "Next photo",
+          openLabel: "Open photo gallery",
+          thumbsLabel: "Photo gallery",
+          thumbLabel: "Show photo",
+        },
       },
       spazi: {
         eyebrow: "The spaces",
@@ -173,11 +185,6 @@
       if (typeof value === "string") el.innerHTML = value;
     });
 
-    document.querySelectorAll("[data-i18n-attr-alt]").forEach((el) => {
-      const value = getValue(dict, el.getAttribute("data-i18n-attr-alt"));
-      if (typeof value === "string") el.setAttribute("alt", value);
-    });
-
     document.querySelectorAll("[data-i18n-attr-aria-label]").forEach((el) => {
       const value = getValue(dict, el.getAttribute("data-i18n-attr-aria-label"));
       if (typeof value === "string") el.setAttribute("aria-label", value);
@@ -198,7 +205,16 @@
 
     localStorage.setItem(STORAGE_KEY, lang);
     window.__minolloLang = lang;
+    window.dispatchEvent(new CustomEvent("minollo:langchange", { detail: { lang } }));
   }
+
+  // Small public helper so other scripts (e.g. the gallery) can translate
+  // strings for content that's generated dynamically after page load.
+  window.minolloT = function translate(key) {
+    const dict = translations[window.__minolloLang] || translations[DEFAULT_LANG];
+    const value = getValue(dict, key);
+    return typeof value === "string" ? value : "";
+  };
 
   function initLangSwitch() {
     const switchEl = document.getElementById("langSwitch");

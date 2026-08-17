@@ -18,6 +18,10 @@
     />
 
     <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css"
+    />
     <script>
       document.documentElement.classList.add("js");
     </script>
@@ -88,7 +92,7 @@
       <section class="hero" id="top">
         <img
           class="hero__scene"
-          src="img/front_door.jpg"
+          src="img/04_front_door.jpg"
           alt=""
           aria-hidden="true"
           loading="eager"
@@ -147,15 +151,46 @@
             </p>
           </div>
           <div class="reveal reveal--delay">
-            <img
-              class="illus"
-              src="img/kitchen.jpg"
-              alt="Zona giorno con cucina della casa"
-              data-i18n-attr-alt="casa.imgAlt"
-              loading="lazy"
-              width="1000"
-              height="667"
-            />
+            <div class="gallery" data-gallery>
+              <div class="gallery__frame">
+                <button
+                  type="button"
+                  class="gallery__nav gallery__nav--prev"
+                  aria-label="Immagine precedente"
+                  data-i18n-attr-aria-label="casa.gallery.prevLabel"
+                >
+                  <span aria-hidden="true">&#8249;</span>
+                </button>
+                <button
+                  type="button"
+                  class="gallery__main-trigger"
+                  aria-label="Apri la galleria fotografica"
+                  data-i18n-attr-aria-label="casa.gallery.openLabel"
+                >
+                  <img
+                    class="gallery__main-image"
+                    src="img/01_kitchen.jpg"
+                    alt=""
+                    loading="lazy"
+                    width="1000"
+                    height="667"
+                  />
+                </button>
+                <button
+                  type="button"
+                  class="gallery__nav gallery__nav--next"
+                  aria-label="Immagine successiva"
+                  data-i18n-attr-aria-label="casa.gallery.nextLabel"
+                >
+                  <span aria-hidden="true">&#8250;</span>
+                </button>
+              </div>
+              <div
+                class="gallery__thumbs"
+                aria-label="Galleria fotografica"
+                data-i18n-attr-aria-label="casa.gallery.thumbsLabel"
+              ></div>
+            </div>
           </div>
         </div>
       </section>
@@ -373,6 +408,7 @@
       </symbol>
     </svg>
 
+    <script src="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/js/glightbox.min.js"></script>
     <script src="i18n.js"></script>
     <script src="script.js"></script>
   </body>
