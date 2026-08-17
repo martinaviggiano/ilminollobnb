@@ -1,4 +1,4 @@
-// Il Minollo B&B — small vanilla JS, no dependencies
+// Il Minollo B&B
 
 document.addEventListener("DOMContentLoaded", () => {
   // Footer year
@@ -57,6 +57,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function initGallery() {
+  // Ordered list of gallery images. Add/remove a line here whenever
+  // adding/removing pictures from img/.
   const galleryImages = [
     "img/01_kitchen.jpg",
     "img/02_bathroom.jpg",
@@ -69,23 +71,29 @@ function initGallery() {
   const gallery = document.querySelector("[data-gallery]");
   if (!gallery) return;
 
+  const frame = gallery.querySelector(".gallery__frame");
   const mainImage = gallery.querySelector(".gallery__main-image");
   const mainTrigger = gallery.querySelector(".gallery__main-trigger");
   const prevBtn = gallery.querySelector(".gallery__nav--prev");
   const nextBtn = gallery.querySelector(".gallery__nav--next");
   const thumbs = gallery.querySelector(".gallery__thumbs");
-  const lightbox = document.getElementById("photoLightbox");
-  const lightboxImage = lightbox ? lightbox.querySelector(".lightbox__image") : null;
-  const lightboxPrev = lightbox ? lightbox.querySelector(".lightbox__nav--prev") : null;
-  const lightboxNext = lightbox ? lightbox.querySelector(".lightbox__nav--next") : null;
-  const lightboxClose = lightbox ? lightbox.querySelector(".lightbox__close") : null;
-  const lightboxCounter = lightbox ? lightbox.querySelector(".lightbox__count") : null;
 
   let currentIndex = 0;
+  let glightbox = null;
+
+  const t = (key, fallback) =>
+    (typeof window.minolloT === "function" && window.minolloT(key)) || fallback;
 
   const clampIndex = (index) => {
     const length = galleryImages.length;
     return ((index % length) + length) % length;
+  };
+
+  const setThumbLabel = (thumbEl, index) => {
+    thumbEl.setAttribute(
+      "aria-label",
+      `${t("casa.gallery.thumbLabel", "Mostra la foto")} ${index + 1}`,
+    );
   };
 
   const renderThumbs = () => {
@@ -94,25 +102,27 @@ function initGallery() {
     thumbs.innerHTML = "";
 
     galleryImages.forEach((src, index) => {
-      const thumbButton = document.createElement("button");
-      thumbButton.type = "button";
-      thumbButton.className = "gallery__thumb";
-      thumbButton.setAttribute("aria-label", `Mostra la foto ${index + 1}`);
-      if (index === currentIndex) thumbButton.classList.add("is-active");
+      // Each thumbnail is a GLightbox trigger in its own right: clicking
+      // it opens the full-size lightbox gallery directly at this index.
+      const thumbLink = document.createElement("a");
+      thumbLink.href = src;
+      thumbLink.className = "gallery__thumb glightbox";
+      thumbLink.dataset.gallery = "casa-gallery";
+      setThumbLabel(thumbLink, index);
+      if (index === currentIndex) thumbLink.classList.add("is-active");
 
       const thumbImage = document.createElement("img");
       thumbImage.src = src;
       thumbImage.alt = "";
       thumbImage.loading = "lazy";
 
-      thumbButton.appendChild(thumbImage);
-      thumbButton.addEventListener("click", () => {
+      thumbLink.appendChild(thumbImage);
+      thumbLink.addEventListener("click", () => {
         currentIndex = index;
         updateMainImage();
-        openLightbox();
       });
 
-      thumbs.appendChild(thumbButton);
+      thumbs.appendChild(thumbLink);
     });
   };
 
@@ -128,40 +138,15 @@ function initGallery() {
     }
   };
 
-  const updateLightbox = () => {
-    if (!lightbox || !lightboxImage || !lightboxCounter) return;
-
-    lightboxImage.src = galleryImages[currentIndex];
-    lightboxImage.alt = "";
-    lightboxCounter.textContent = `${currentIndex + 1} / ${galleryImages.length}`;
-  };
-
-  const openLightbox = () => {
-    if (!lightbox) return;
-    currentIndex = clampIndex(currentIndex);
-    updateLightbox();
-    lightbox.classList.add("is-open");
-    lightbox.setAttribute("aria-hidden", "false");
-    document.body.classList.add("lightbox-open");
-  };
-
-  const closeLightbox = () => {
-    if (!lightbox) return;
-    lightbox.classList.remove("is-open");
-    lightbox.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("lightbox-open");
-  };
-
   const changeImage = (direction) => {
     currentIndex = clampIndex(currentIndex + direction);
     updateMainImage();
-    if (lightbox && lightbox.classList.contains("is-open")) {
-      updateLightbox();
-    }
   };
 
   if (mainTrigger) {
-    mainTrigger.addEventListener("click", () => openLightbox());
+    mainTrigger.addEventListener("click", () => {
+      if (glightbox) glightbox.openAt(currentIndex);
+    });
   }
 
   if (prevBtn) {
@@ -178,40 +163,68 @@ function initGallery() {
     });
   }
 
-  if (lightboxPrev) {
-    lightboxPrev.addEventListener("click", () => changeImage(-1));
+  // Touch swipe on the inline preview (the lightbox handles its own
+  // swipe internally via GLightbox's touchNavigation option).
+  if (frame) {
+    const SWIPE_THRESHOLD = 40;
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    frame.addEventListener(
+      "touchstart",
+      (event) => {
+        const touch = event.changedTouches[0];
+        touchStartX = touch.clientX;
+        touchStartY = touch.clientY;
+      },
+      { passive: true },
+    );
+
+    frame.addEventListener(
+      "touchend",
+      (event) => {
+        const touch = event.changedTouches[0];
+        const deltaX = touch.clientX - touchStartX;
+        const deltaY = touch.clientY - touchStartY;
+
+        if (Math.abs(deltaX) > SWIPE_THRESHOLD && Math.abs(deltaX) > Math.abs(deltaY)) {
+          changeImage(deltaX < 0 ? 1 : -1);
+        }
+      },
+      { passive: true },
+    );
   }
 
-  if (lightboxNext) {
-    lightboxNext.addEventListener("click", () => changeImage(1));
-  }
-
-  if (lightboxClose) {
-    lightboxClose.addEventListener("click", closeLightbox);
-  }
-
-  if (lightbox) {
-    lightbox.addEventListener("click", (event) => {
-      if (event.target === lightbox) closeLightbox();
+  // Thumbnails are created once; keep their aria-labels correct if the
+  // user switches language later (i18n.js dispatches this event).
+  window.addEventListener("minollo:langchange", () => {
+    if (!thumbs) return;
+    thumbs.querySelectorAll(".gallery__thumb").forEach((thumb, index) => {
+      setThumbLabel(thumb, index);
     });
-  }
-
-  window.addEventListener("keydown", (event) => {
-    if (!lightbox || !lightbox.classList.contains("is-open")) return;
-
-    if (event.key === "Escape") {
-      closeLightbox();
-    }
-
-    if (event.key === "ArrowLeft") {
-      changeImage(-1);
-    }
-
-    if (event.key === "ArrowRight") {
-      changeImage(1);
-    }
   });
 
   renderThumbs();
   updateMainImage();
+
+  if (typeof GLightbox === "function") {
+    glightbox = GLightbox({
+      selector: ".glightbox",
+      touchNavigation: true,
+      keyboardNavigation: true,
+      closeOnOutsideClick: true,
+      loop: true,
+      zoomable: true,
+      draggable: true,
+      openEffect: "zoom",
+      closeEffect: "zoom",
+    });
+
+    glightbox.on("slide_changed", ({ current }) => {
+      if (current && typeof current.slideIndex === "number") {
+        currentIndex = current.slideIndex;
+        updateMainImage();
+      }
+    });
+  }
 }

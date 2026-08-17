@@ -18,6 +18,10 @@
     />
 
     <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css"
+    />
     <script>
       document.documentElement.classList.add("js");
     </script>
@@ -153,6 +157,7 @@
                   type="button"
                   class="gallery__nav gallery__nav--prev"
                   aria-label="Immagine precedente"
+                  data-i18n-attr-aria-label="casa.gallery.prevLabel"
                 >
                   <span aria-hidden="true">&#8249;</span>
                 </button>
@@ -160,6 +165,7 @@
                   type="button"
                   class="gallery__main-trigger"
                   aria-label="Apri la galleria fotografica"
+                  data-i18n-attr-aria-label="casa.gallery.openLabel"
                 >
                   <img
                     class="gallery__main-image"
@@ -174,11 +180,16 @@
                   type="button"
                   class="gallery__nav gallery__nav--next"
                   aria-label="Immagine successiva"
+                  data-i18n-attr-aria-label="casa.gallery.nextLabel"
                 >
                   <span aria-hidden="true">&#8250;</span>
                 </button>
               </div>
-              <div class="gallery__thumbs" aria-label="Galleria fotografica"></div>
+              <div
+                class="gallery__thumbs"
+                aria-label="Galleria fotografica"
+                data-i18n-attr-aria-label="casa.gallery.thumbsLabel"
+              ></div>
             </div>
           </div>
         </div>
@@ -397,26 +408,7 @@
       </symbol>
     </svg>
 
-    <div
-      class="lightbox"
-      id="photoLightbox"
-      aria-hidden="true"
-      aria-modal="true"
-      role="dialog"
-    >
-      <button type="button" class="lightbox__close" aria-label="Chiudi galleria">×</button>
-      <button type="button" class="lightbox__nav lightbox__nav--prev" aria-label="Immagine precedente">
-        <span aria-hidden="true">&#8249;</span>
-      </button>
-      <div class="lightbox__viewport">
-        <img class="lightbox__image" src="" alt="" />
-      </div>
-      <button type="button" class="lightbox__nav lightbox__nav--next" aria-label="Immagine successiva">
-        <span aria-hidden="true">&#8250;</span>
-      </button>
-      <div class="lightbox__count" aria-live="polite">1 / 1</div>
-    </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/js/glightbox.min.js"></script>
     <script src="i18n.js"></script>
     <script src="script.js"></script>
   </body>
