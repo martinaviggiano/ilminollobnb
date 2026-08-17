@@ -38,7 +38,6 @@
           "Il Minollo è una casa vacanze indipendente pensata per chi cerca tranquillità e autenticità: un'ampia e accogliente zona giorno con cucina, due camere da letto, un bagno e un piccolo terrazzino affacciato sul paesaggio di Postiglione.",
         p2:
           "Il punto di partenza ideale per esplorare i monti Alburni, il Vallo di Diano e i sentieri del Parco Nazionale del Cilento.",
-        imgAlt: "Zona giorno con cucina della casa",
       },
       spazi: {
         eyebrow: "Gli spazi",
@@ -107,7 +106,6 @@
           "Il Minollo is an independent holiday home designed for those seeking peace and authenticity: a bright, welcoming living area with kitchen, two bedrooms, one bathroom, and a small terrace overlooking the Postiglione landscape.",
         p2:
           "The ideal starting point for exploring the Alburni mountains, the Vallo di Diano and the trails of the Cilento National Park.",
-        imgAlt: "Living area with kitchen inside the house",
       },
       spazi: {
         eyebrow: "The spaces",
@@ -171,11 +169,6 @@
       const key = el.getAttribute("data-i18n-html");
       const value = getValue(dict, key);
       if (typeof value === "string") el.innerHTML = value;
-    });
-
-    document.querySelectorAll("[data-i18n-attr-alt]").forEach((el) => {
-      const value = getValue(dict, el.getAttribute("data-i18n-attr-alt"));
-      if (typeof value === "string") el.setAttribute("alt", value);
     });
 
     document.querySelectorAll("[data-i18n-attr-aria-label]").forEach((el) => {

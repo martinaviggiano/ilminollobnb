@@ -147,15 +147,39 @@
             </p>
           </div>
           <div class="reveal reveal--delay">
-            <img
-              class="illus"
-              src="img/01_kitchen.jpg"
-              alt="Zona giorno con cucina della casa"
-              data-i18n-attr-alt="casa.imgAlt"
-              loading="lazy"
-              width="1000"
-              height="667"
-            />
+            <div class="gallery" data-gallery>
+              <div class="gallery__frame">
+                <button
+                  type="button"
+                  class="gallery__nav gallery__nav--prev"
+                  aria-label="Immagine precedente"
+                >
+                  <span aria-hidden="true">&#8249;</span>
+                </button>
+                <button
+                  type="button"
+                  class="gallery__main-trigger"
+                  aria-label="Apri la galleria fotografica"
+                >
+                  <img
+                    class="gallery__main-image"
+                    src="img/01_kitchen.jpg"
+                    alt=""
+                    loading="lazy"
+                    width="1000"
+                    height="667"
+                  />
+                </button>
+                <button
+                  type="button"
+                  class="gallery__nav gallery__nav--next"
+                  aria-label="Immagine successiva"
+                >
+                  <span aria-hidden="true">&#8250;</span>
+                </button>
+              </div>
+              <div class="gallery__thumbs" aria-label="Galleria fotografica"></div>
+            </div>
           </div>
         </div>
       </section>
@@ -372,6 +396,26 @@
         />
       </symbol>
     </svg>
+
+    <div
+      class="lightbox"
+      id="photoLightbox"
+      aria-hidden="true"
+      aria-modal="true"
+      role="dialog"
+    >
+      <button type="button" class="lightbox__close" aria-label="Chiudi galleria">×</button>
+      <button type="button" class="lightbox__nav lightbox__nav--prev" aria-label="Immagine precedente">
+        <span aria-hidden="true">&#8249;</span>
+      </button>
+      <div class="lightbox__viewport">
+        <img class="lightbox__image" src="" alt="" />
+      </div>
+      <button type="button" class="lightbox__nav lightbox__nav--next" aria-label="Immagine successiva">
+        <span aria-hidden="true">&#8250;</span>
+      </button>
+      <div class="lightbox__count" aria-live="polite">1 / 1</div>
+    </div>
 
     <script src="i18n.js"></script>
     <script src="script.js"></script>
